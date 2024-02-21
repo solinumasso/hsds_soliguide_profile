@@ -1,0 +1,21 @@
+{
+  "properties": {
+    "id": {
+      "format": null,
+      "example": "service-id-1234"
+    },
+    "service_id": {
+      "format": null
+    },
+    "location_id": {
+      "type": "number",
+      "format": null,
+      "example": "1234"
+    },
+    "description": null,
+    "contacts": null,
+    "phones": null,
+    "schedules": null,
+    "attributes": null
+  }
+}

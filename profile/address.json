@@ -1,0 +1,56 @@
+{
+  "properties": {
+    "id": {
+      "format": null,
+      "constraints": {
+        "unique": true
+      },
+      "example": "1-avenue-de-la-republique-75001-paris-france"
+    },
+    "location_id": {
+      "type": "number",
+      "constraints": {
+        "unique": true
+      },
+      "example": "1234"
+    },
+    "attention": null,
+    "address_2": null,
+    "cityCode": {
+      "name": "cityCode",
+      "type": "string",
+      "title": "City code",
+      "description": "The city code when applicable. In France it's the INSEE code.",
+      "constraints": {
+        "unique": false
+      },
+      "example": "75000"
+    },
+    "region": {
+      "example": "Auvergne-Rhône-Alpes"
+    },
+    "state_province": {
+      "example": "Puy-de-Dôme"
+    },
+    "postal_code": {
+      "example": "63000"
+    },
+    "address_type": {
+      "example": "postal",
+      "const": "postal",
+      "enum": null
+    },
+    "attributes": null
+  },
+  "required": [
+    "id",
+    "address_1",
+    "city",
+    "region",
+    "state_province",
+    "postal_code",
+    "country",
+    "address_type",
+    "location_id"
+  ]
+}
