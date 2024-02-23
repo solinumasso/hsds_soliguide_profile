@@ -12,14 +12,13 @@
   "properties": {
     "id": {
       "name": "id",
-      "type": "string",
+      "type": "number",
       "title": "Identifier",
       "description": "The identifier for the organization. Each organization must have a unique identifier.",
-      "format": "uuid",
       "constraints": {
         "unique": true
       },
-      "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610",
+      "example": "1234",
       "core": "Y"
     },
     "name": {
@@ -31,17 +30,6 @@
         "unique": false
       },
       "example": "Example Organization Inc.",
-      "core": "Y"
-    },
-    "alternate_name": {
-      "name": "alternate_name",
-      "type": "string",
-      "title": "Alternate Name",
-      "description": "An (optional) alternative or commonly used name for the organization.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "Example Org",
       "core": "Y"
     },
     "description": {
@@ -79,46 +67,6 @@
       "example": "http://example.com",
       "core": "Y"
     },
-    "tax_status": {
-      "name": "tax_status",
-      "type": "string",
-      "title": "Tax Status",
-      "description": "DEPRECATED: Government assigned tax designation for tax-exempt organizations.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "tax_status"
-    },
-    "tax_id": {
-      "name": "tax_id",
-      "type": "string",
-      "title": "Tax Identifier",
-      "description": "DEPRECATED: A government issued identifier used for the purpose of tax administration.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "tax_id"
-    },
-    "year_incorporated": {
-      "name": "year_incorporated",
-      "type": "number",
-      "title": "Year Incorporated",
-      "description": "The year in which the organization was legally formed.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "2011"
-    },
-    "legal_status": {
-      "name": "legal_status",
-      "type": "string",
-      "title": "Legal Status",
-      "description": "The legal conditions that an organization is operating under.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "Limited Company"
-    },
     "logo": {
       "name": "logo",
       "type": "string",
@@ -128,37 +76,6 @@
         "unique": false
       },
       "example": "https://openreferral.org/wp-content/uploads/2018/02/OpenReferral_Logo_Green-4-1.png"
-    },
-    "uri": {
-      "name": "uri",
-      "type": "string",
-      "title": "URI",
-      "description": "A persistent identifier to uniquely identify the organization such as those provided by Open Corporates or some other relevant URI provider. This is not for listing the website of the organization: that can be done through the website field of the Organization.",
-      "format": "uri",
-      "constraints": {
-        "unique": false
-      },
-      "example": "http://example.com"
-    },
-    "parent_organization_id": {
-      "name": "parent_organization_id",
-      "type": "string",
-      "title": "Parent Organization Identifier",
-      "description": "The identifier of the organization's parent organization.",
-      "format": "uuid",
-      "constraints": {
-        "unique": false
-      },
-      "example": "cd09a387-91f4-4555-94ec-e799c35344cd"
-    },
-    "funding": {
-      "name": "funding",
-      "type": "array",
-      "title": "Funding",
-      "description": "The sources of funding for a service or organization.",
-      "items": {
-        "$ref": "funding.json"
-      }
     },
     "contacts": {
       "name": "contacts",
@@ -185,24 +102,6 @@
       "description": "The details of the locations where organizations operate. Locations may be virtual, and one organization may have many locations.",
       "items": {
         "$ref": "location.json"
-      }
-    },
-    "programs": {
-      "name": "programs",
-      "type": "array",
-      "title": "Programs",
-      "description": "The details of collection of related services.",
-      "items": {
-        "$ref": "program.json"
-      }
-    },
-    "organization_identifiers": {
-      "name": "organization_identifiers",
-      "type": "array",
-      "title": "Organization Identifiers",
-      "description": "The details of the third party identifiers for organizations, such as: company registration number, charity number, tax registration number.",
-      "items": {
-        "$ref": "organization_identifier.json"
       }
     },
     "attributes": {

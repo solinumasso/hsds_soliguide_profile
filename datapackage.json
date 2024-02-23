@@ -23,15 +23,14 @@
                 "fields": [
                     {
                         "name": "id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Identifier",
                         "description": "The identifier for the organization. Each organization must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610",
+                        "example": "1234",
                         "core": "Y"
                     },
                     {
@@ -44,18 +43,6 @@
                             "unique": false
                         },
                         "example": "Example Organization Inc.",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "alternate_name",
-                        "type": "string",
-                        "title": "Alternate Name",
-                        "description": "An (optional) alternative or commonly used name for the organization.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Example Org",
                         "core": "Y"
                     },
                     {
@@ -97,50 +84,6 @@
                         "core": "Y"
                     },
                     {
-                        "name": "tax_status",
-                        "type": "string",
-                        "title": "Tax Status",
-                        "description": "DEPRECATED: Government assigned tax designation for tax-exempt organizations.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "tax_status"
-                    },
-                    {
-                        "name": "tax_id",
-                        "type": "string",
-                        "title": "Tax Identifier",
-                        "description": "DEPRECATED: A government issued identifier used for the purpose of tax administration.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "tax_id"
-                    },
-                    {
-                        "name": "year_incorporated",
-                        "type": "number",
-                        "title": "Year Incorporated",
-                        "description": "The year in which the organization was legally formed.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2011"
-                    },
-                    {
-                        "name": "legal_status",
-                        "type": "string",
-                        "title": "Legal Status",
-                        "description": "The legal conditions that an organization is operating under.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Limited Company"
-                    },
-                    {
                         "name": "logo",
                         "type": "string",
                         "title": "Logo",
@@ -150,109 +93,6 @@
                             "unique": false
                         },
                         "example": "https://openreferral.org/wp-content/uploads/2018/02/OpenReferral_Logo_Green-4-1.png"
-                    },
-                    {
-                        "name": "uri",
-                        "type": "string",
-                        "title": "URI",
-                        "description": "A persistent identifier to uniquely identify the organization such as those provided by Open Corporates or some other relevant URI provider. This is not for listing the website of the organization: that can be done through the website field of the Organization.",
-                        "format": "uri",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "http://example.com"
-                    },
-                    {
-                        "name": "parent_organization_id",
-                        "type": "string",
-                        "title": "Parent Organization Identifier",
-                        "description": "The identifier of the organization's parent organization.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "cd09a387-91f4-4555-94ec-e799c35344cd"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "program",
-            "path": "programs.csv",
-            "description": "The details of collections of related services.",
-            "format": "csv",
-            "mediatype": "text/csv",
-            "profile": "tabular-data-resource",
-            "schema": {
-                "primaryKey": "id",
-                "fields": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "title": "Identifier",
-                        "description": "The identifier for the program. Each program must have a unique identifier.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": true
-                        },
-                        "example": "e7ec2e57-4540-43fa-b2c7-6be5a0ef7f42"
-                    },
-                    {
-                        "name": "organization_id",
-                        "type": "string",
-                        "title": "Organization Identifier",
-                        "description": "The identifier for the organization which the program belongs to. Each program must belong to a single organization, and the identifier for that organization should be given here.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": true
-                        },
-                        "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610"
-                    },
-                    {
-                        "name": "name",
-                        "type": "string",
-                        "title": "Name",
-                        "description": "The name of the program.",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "Community Mental Health Support"
-                    },
-                    {
-                        "name": "alternate_name",
-                        "type": "string",
-                        "title": "Alternate Name",
-                        "description": "The (optional) alternative name for the program.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "MyCity Mental Health Group"
-                    },
-                    {
-                        "name": "description",
-                        "type": "string",
-                        "title": "Description",
-                        "description": "A free text description of the program",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "Comprehensive Mental Health Services available to residents of MyCity including CBT and Counselling. This is not an emergency service and should not be used as an alternative to hospital and GP services."
-                    }
-                ],
-                "foreignKeys": [
-                    {
-                        "fields": "organization_id",
-                        "reference": {
-                            "resource": "organization",
-                            "fields": "id"
-                        }
                     }
                 ]
             }
@@ -261,13 +101,6 @@
             "name": "service",
             "path": "services.csv",
             "description": "The details of the services provided by organizations to a range of different groups.",
-            "allOf": [
-                {
-                    "required": [
-                        "url"
-                    ]
-                }
-            ],
             "format": "csv",
             "mediatype": "text/csv",
             "profile": "tabular-data-resource",
@@ -279,38 +112,12 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier for the service. Each service must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
                         "example": "ac148810-d857-441c-9679-408f346de14b",
                         "core": "Y"
-                    },
-                    {
-                        "name": "organization_id",
-                        "type": "string",
-                        "title": "Organization Identifier",
-                        "description": "The identifier of the organization that provides this service.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "program_id",
-                        "type": "string",
-                        "title": "Program Identifier",
-                        "description": "The identifier of the program this service is delivered under.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "e7ec2e57-4540-43fa-b2c7-6be5a0ef7f42"
                     },
                     {
                         "name": "name",
@@ -325,17 +132,6 @@
                         "core": "Y"
                     },
                     {
-                        "name": "alternate_name",
-                        "type": "string",
-                        "title": "Alternate Name",
-                        "description": "An (optional) alternative name for this service.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "MyCity Counselling Services"
-                    },
-                    {
                         "name": "description",
                         "type": "string",
                         "title": "Description",
@@ -345,32 +141,6 @@
                             "unique": false
                         },
                         "example": "Counselling Services provided by trained professionals. Suitable for people with mental health conditions such as anxiety, depression, or eating disorders as well as people experiencing difficult life events and circumstances. ",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "url",
-                        "type": "string",
-                        "title": "URL",
-                        "description": "URL of the service",
-                        "format": "uri",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "http://example.com/counselling",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "email",
-                        "type": "string",
-                        "title": "Email",
-                        "description": "An email address which can be used to contact the service provider.",
-                        "format": "email",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "email@example.com",
                         "core": "Y"
                     },
                     {
@@ -392,60 +162,26 @@
                         "core": "Y"
                     },
                     {
-                        "name": "interpretation_services",
+                        "name": "fees_description",
                         "type": "string",
-                        "title": "Interpretation Services",
-                        "description": "A free text description of any interpretation services available for accessing this service.",
+                        "title": "Fees Description",
+                        "description": "A free text description of any charges for service users to access this service.",
                         "constraints": {
                             "required": false,
                             "unique": false
                         },
-                        "example": "Interpretation services are available in Urdu, Polish, and Slovak"
+                        "example": "Non-NHS patients are expected to pay for their counselling sessions. We charge a flat rate per hour of counselling. The current rate is \u00a350 per hour. Please see our website for up to date prices."
                     },
                     {
-                        "name": "application_process",
+                        "name": "fees",
                         "type": "string",
-                        "title": "Application Process",
-                        "description": "A free text description of the steps needed to access this service.",
+                        "title": "Fees",
+                        "description": "DEPRECATED: Details of any charges for service users to access this service.",
                         "constraints": {
                             "required": false,
                             "unique": false
                         },
-                        "example": "If you are an NHS patient please ask your GP for a referral letter, we will then be in touch with you directly. If you are not an NHS patient you should ring our reception to arrange an appointment"
-                    },
-                    {
-                        "name": "wait_time",
-                        "type": "string",
-                        "title": "Wait Time",
-                        "description": "DEPRECATED: The time a client may expect to wait before receiving a service.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "wait_time"
-                    },
-                    {
-                        "name": "accreditations",
-                        "type": "string",
-                        "title": "Accreditations",
-                        "description": "A free text description of any accreditations. Accreditation is the formal evaluation of an organization or program against best practice standards set by an accrediting organization.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "All of our practitioners are accredited by the BASC, UKCP, and the Professional Standards Body"
-                    },
-                    {
-                        "name": "eligibility_description",
-                        "type": "string",
-                        "title": "Eligibility Description",
-                        "description": "A free text description of the type of person for whom this service is intended.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "This service is intended for all people aged 12 and over who require counselling services in the MyCity area",
-                        "core": "Y"
+                        "example": "fees_description"
                     },
                     {
                         "name": "minimum_age",
@@ -493,28 +229,6 @@
                         "example": "email@example.com"
                     },
                     {
-                        "name": "licenses",
-                        "type": "string",
-                        "title": "Licenses",
-                        "description": "DEPRECATED: An organization may have a license issued by a government entity to operate legally. A list of any such licenses can be provided here.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "licences"
-                    },
-                    {
-                        "name": "alert",
-                        "type": "string",
-                        "title": "Alert",
-                        "description": "A description of any short term alerts concerning the service.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Following COVID-19 we have moved most of our counselling sessions online. Please contact the reception if you require further information."
-                    },
-                    {
                         "name": "last_modified",
                         "type": "datetime",
                         "title": "Last Modified",
@@ -524,22 +238,6 @@
                             "unique": false
                         },
                         "example": "2023-03-15T10:30:45.123Z"
-                    }
-                ],
-                "foreignKeys": [
-                    {
-                        "fields": "organization_id",
-                        "reference": {
-                            "resource": "organization",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "program_id",
-                        "reference": {
-                            "resource": "program",
-                            "fields": "id"
-                        }
                     }
                 ]
             }
@@ -656,12 +354,11 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier of the service at location entry. Each entry must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "e94c9f38-1e8f-4564-91d4-d53501ab1765",
+                        "example": "service-id-1234",
                         "core": "Y"
                     },
                     {
@@ -669,7 +366,6 @@
                         "type": "string",
                         "title": "Service Identifier",
                         "description": "The identifier of the service at a given location.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": false
@@ -679,27 +375,15 @@
                     },
                     {
                         "name": "location_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Location Identifier",
                         "description": "The identifier of the location where this service operates.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": false
                         },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5",
+                        "example": "1234",
                         "core": "Y"
-                    },
-                    {
-                        "name": "description",
-                        "type": "string",
-                        "title": "Description",
-                        "description": "A free text description of the service at this specific location.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Counselling Services provided by trained professionals in the MyCity area."
                     }
                 ],
                 "foreignKeys": [
@@ -732,33 +416,27 @@
                 "fields": [
                     {
                         "name": "id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Identifier",
                         "description": "The identifier of the location. Each location must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5",
+                        "example": "1234",
                         "core": "Y"
                     },
                     {
                         "name": "location_type",
                         "type": "string",
                         "title": "Location Type",
-                        "description": "The type of location, which may be either physical, postal, or virtual.",
+                        "description": "The type of location, which can only be postal for now.",
                         "constraints": {
                             "required": true,
-                            "unique": false,
-                            "enum": [
-                                "physical",
-                                "postal",
-                                "virtual"
-                            ]
+                            "unique": false
                         },
-                        "example": "physical",
-                        "core": "Y"
+                        "core": "Y",
+                        "const": "postal"
                     },
                     {
                         "name": "url",
@@ -775,15 +453,14 @@
                     },
                     {
                         "name": "organization_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Organization Identifier",
                         "description": "The organization identifier for a location. This is the organization that is responsible for maintaining information about this location. The identifier of the organization should be given here. Details of the services the organization delivers at this location should be provided in the services_at_location table.",
-                        "format": "uuid",
                         "constraints": {
                             "required": false,
                             "unique": false
                         },
-                        "example": "985e4a42-bd9f-4edc-911d-0243a4640aca"
+                        "example": "1234"
                     },
                     {
                         "name": "name",
@@ -791,22 +468,11 @@
                         "title": "Name",
                         "description": "The name of the location.",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
                         "example": "MyCity Civic Center",
                         "core": "Y"
-                    },
-                    {
-                        "name": "alternate_name",
-                        "type": "string",
-                        "title": "Alternate Name",
-                        "description": "An (optional) alternative name of the location.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Civic Center"
                     },
                     {
                         "name": "description",
@@ -819,17 +485,6 @@
                         },
                         "example": "MyCity Civic Center is located on Main Street and contains facilities for a number of civic and community services available.",
                         "core": "Y"
-                    },
-                    {
-                        "name": "transportation",
-                        "type": "string",
-                        "title": "Transportation",
-                        "description": "A free text description of the access to public or private transportation to and from the location.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "MyCity Civic Center is serviced by the number 1 Bus and is a short walk from the Main Street Metro Station"
                     },
                     {
                         "name": "latitude",
@@ -854,28 +509,6 @@
                         },
                         "example": "101",
                         "core": "Y"
-                    },
-                    {
-                        "name": "external_identifier",
-                        "type": "string",
-                        "title": "External Identifier",
-                        "description": "A third party identifier for the location, which can be drawn from other services e.g. UK UPRN.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "10092008082"
-                    },
-                    {
-                        "name": "external_identifier_type",
-                        "type": "string",
-                        "title": "External Identifier Type",
-                        "description": "The scheme used for the location's external_identifier e.g. UK UPRN.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "UPRN"
                     }
                 ],
                 "foreignKeys": [
@@ -904,7 +537,6 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier for the phone number. Each entry must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
@@ -925,28 +557,15 @@
                         "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5"
                     },
                     {
-                        "name": "service_id",
-                        "type": "string",
-                        "title": "Service Identifier",
-                        "description": "The identifier of the service for which this is the phone number.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "ac148810-d857-441c-9679-408f346de14b"
-                    },
-                    {
                         "name": "organization_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Organization Identifier",
                         "description": "The identifier of the organization for which this is the phone number.",
-                        "format": "uuid",
                         "constraints": {
                             "required": false,
                             "unique": false
                         },
-                        "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610"
+                        "example": "1234"
                     },
                     {
                         "name": "contact_id",
@@ -962,18 +581,6 @@
                         "core": "Y"
                     },
                     {
-                        "name": "service_at_location_id",
-                        "type": "string",
-                        "title": "Service At Location Identifier",
-                        "description": "The identifier of the \u2018service at location\u2019 table entry, when this phone number is specific to a service in a particular location.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "e94c9f38-1e8f-4564-91d4-d53501ab1765"
-                    },
-                    {
                         "name": "number",
                         "type": "string",
                         "title": "Number",
@@ -984,28 +591,6 @@
                         },
                         "example": "\"+44 1234 234567\"",
                         "core": "Y"
-                    },
-                    {
-                        "name": "extension",
-                        "type": "number",
-                        "title": "Extension",
-                        "description": "The extension of the phone number.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "100"
-                    },
-                    {
-                        "name": "type",
-                        "type": "string",
-                        "title": "Type",
-                        "description": "Indicates the type of phone service, drawing from the RFC6350 list of types (text (for SMS), voice, fax, cell, video, pager, textphone).",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "voice"
                     },
                     {
                         "name": "description",
@@ -1040,20 +625,6 @@
                             "resource": "organization",
                             "fields": "id"
                         }
-                    },
-                    {
-                        "fields": "service_id",
-                        "reference": {
-                            "resource": "service",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "service_at_location_id",
-                        "reference": {
-                            "resource": "service_at_location",
-                            "fields": "id"
-                        }
                     }
                 ]
             }
@@ -1083,52 +654,25 @@
                     },
                     {
                         "name": "organization_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Organization Identifier",
                         "description": "The identifier of the organization for which this is a contact.",
-                        "format": "uuid",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
-                        "example": "ae67a707-5893-4225-b0b1-320ab9cb596b"
-                    },
-                    {
-                        "name": "service_id",
-                        "type": "string",
-                        "title": "Service Identifier",
-                        "description": "The identifier of the service for which this is a contact.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "ac148810-d857-441c-9679-408f346de14b",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "service_at_location_id",
-                        "type": "string",
-                        "title": "Service At Location Identifier",
-                        "format": "uuid",
-                        "description": "The identifier of the \u2018service at location\u2019 entry, when this contact is specific to a service in a particular location.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "93eaf18d-1cd2-4ec7-bffb-3c9172ee5070"
+                        "example": "1234"
                     },
                     {
                         "name": "location_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Location Identifier",
-                        "format": "uuid",
                         "description": "The identifier for the location of the contact.",
                         "constraints": {
                             "required": false,
                             "unique": false
                         },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5"
+                        "example": "1234"
                     },
                     {
                         "name": "name",
@@ -1136,7 +680,7 @@
                         "title": "Name",
                         "description": "The name of the contact.",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
                         "example": "Ann Persona",
@@ -1155,24 +699,13 @@
                         "core": "Y"
                     },
                     {
-                        "name": "department",
-                        "type": "string",
-                        "title": "Department",
-                        "description": "The department that the contact is a part of.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Reception"
-                    },
-                    {
                         "name": "email",
                         "type": "string",
                         "title": "Email",
                         "description": "The email address of the contact.",
                         "format": "email",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
                         "example": "email@example.com"
@@ -1190,20 +723,6 @@
                         "fields": "organization_id",
                         "reference": {
                             "resource": "organization",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "service_id",
-                        "reference": {
-                            "resource": "service",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "service_at_location_id",
-                        "reference": {
-                            "resource": "service_at_location",
                             "fields": "id"
                         }
                     }
@@ -1225,37 +744,24 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier of the postal address. Each postal address must have a unique identifier.",
+                        "constraints": {
+                            "required": true,
+                            "unique": true
+                        },
+                        "example": "1-avenue-de-la-republique-75001-paris-france",
+                        "core": "Y"
+                    },
+                    {
+                        "name": "location_id",
+                        "type": "number",
+                        "title": "Location Identifier",
+                        "description": "The identifier of the location for this postal address.",
                         "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "74706e55-df26-4b84-80fe-ecc30b5befb4",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "location_id",
-                        "type": "string",
-                        "title": "Location Identifier",
-                        "description": "The identifier of the location for this postal address.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "attention",
-                        "type": "string",
-                        "title": "Attention",
-                        "description": "The name of the person or entity whose attention should be sought at the location. These are often included as a \"care of\" component of an address.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "A. Persona",
+                        "example": "1234",
                         "core": "Y"
                     },
                     {
@@ -1269,17 +775,6 @@
                         },
                         "example": "1-30 Main Street",
                         "core": "Y"
-                    },
-                    {
-                        "name": "address_2",
-                        "type": "string",
-                        "title": "Address line 2",
-                        "description": "A second (additional) line of address information.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "MyVillage"
                     },
                     {
                         "name": "city",
@@ -1299,10 +794,10 @@
                         "title": "Region",
                         "description": "The region in which the address is located (optional).",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
-                        "example": "MyRegion",
+                        "example": "Auvergne-Rh\u00f4ne-Alpes",
                         "core": "Y"
                     },
                     {
@@ -1314,7 +809,7 @@
                             "required": true,
                             "unique": false
                         },
-                        "example": "MyState",
+                        "example": "Puy-de-D\u00f4me",
                         "core": "Y"
                     },
                     {
@@ -1326,7 +821,7 @@
                             "required": true,
                             "unique": false
                         },
-                        "example": "ABC 1234",
+                        "example": "63000",
                         "core": "Y"
                     },
                     {
@@ -1348,15 +843,22 @@
                         "description": "The type of address which may be physical, postal, or virtual.",
                         "constraints": {
                             "required": true,
-                            "unique": false,
-                            "enum": [
-                                "physical",
-                                "postal",
-                                "virtual"
-                            ]
+                            "unique": false
                         },
                         "example": "postal",
-                        "core": "Y"
+                        "core": "Y",
+                        "const": "postal"
+                    },
+                    {
+                        "name": "cityCode",
+                        "type": "string",
+                        "title": "City code",
+                        "description": "The city code when applicable. In France it's the INSEE code.",
+                        "constraints": {
+                            "required": false,
+                            "unique": false
+                        },
+                        "example": "75000"
                     }
                 ],
                 "foreignKeys": [
@@ -1385,12 +887,11 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier for the schedule. Each entry must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "48102e86-bb50-41c4-8f1e-e269368c41d1",
+                        "example": "location-1234-permanent",
                         "core": "Y"
                     },
                     {
@@ -1398,7 +899,6 @@
                         "type": "string",
                         "title": "Service Identifier",
                         "description": "The identifier of the service for which this is the regular schedule",
-                        "format": "uuid",
                         "constraints": {
                             "required": false,
                             "unique": false
@@ -1408,28 +908,14 @@
                     },
                     {
                         "name": "location_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Location Identifier",
                         "description": "The identifier of the location for which this is the regular schedule",
-                        "format": "uuid",
                         "constraints": {
                             "required": false,
                             "unique": false
                         },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5"
-                    },
-                    {
-                        "name": "service_at_location_id",
-                        "type": "string",
-                        "title": "Service At Location Identifier",
-                        "description": "The identifier of the \u2018service at location\u2019 table entry, when this schedule is specific to a service in a particular location.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "e94c9f38-1e8f-4564-91d4-d53501ab1765",
-                        "core": "Y"
+                        "example": "1234"
                     },
                     {
                         "name": "valid_from",
@@ -1456,44 +942,10 @@
                         "core": "Y"
                     },
                     {
-                        "name": "dtstart",
-                        "type": "date",
-                        "title": "Date Start",
-                        "description": "iCal - The date of the first event is the schedule. Necessary when using the \u2018interval\u2019 feature, optional otherwise.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2005-01-01",
-                        "core": "Y"
-                    },
-                    {
                         "name": "timezone",
                         "type": "number",
                         "title": "Timezone",
                         "description": "The timezone that all dates are expressed as, expressed as a UTC offset. Dates are assumed to be UTC otherwise.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "3"
-                    },
-                    {
-                        "name": "until",
-                        "type": "date",
-                        "title": "Until",
-                        "description": "iCal - The date of the last occurrence of the recurring event.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2005-01-01"
-                    },
-                    {
-                        "name": "count",
-                        "type": "number",
-                        "title": "Count",
-                        "description": "iCal - The number of times that the event occurs. Use this instead of \u2018until\u2019, if appropriate.",
                         "constraints": {
                             "required": false,
                             "unique": false
@@ -1527,26 +979,11 @@
                         "description": "iCal - How often the frequency repeats.",
                         "constraints": {
                             "required": false,
-                            "unique": false,
-                            "enum": [
-                                "WEEKLY",
-                                "MONTHLY"
-                            ]
-                        },
-                        "example": "WEEKLY",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "interval",
-                        "type": "number",
-                        "title": "Interval",
-                        "description": "iCal - How often the frequency repeats. For example, and Interval of 2 for a WEEKLY Frequency would represent fortnightly.",
-                        "constraints": {
-                            "required": false,
                             "unique": false
                         },
-                        "example": "1",
-                        "core": "Y"
+                        "example": "WEEKLY",
+                        "core": "Y",
+                        "const": "WEEKLY"
                     },
                     {
                         "name": "byday",
@@ -1558,52 +995,6 @@
                             "unique": false
                         },
                         "example": "TH,FR",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "byweekno",
-                        "type": "string",
-                        "title": "By Week Number",
-                        "description": "iCal - Comma separated numeric weeks of the year, where freq is WEEKLY. Can be negative to represent weeks before the end of the year; e.g. -5 is the 5th to last week in a year.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "41,42"
-                    },
-                    {
-                        "name": "bymonthday",
-                        "type": "string",
-                        "title": "By Month Day",
-                        "description": "iCal - Comma separated numeric days of the month, where frequency is MONTHLY. Can be negative to represent days before the end of the month; e.g. -5 is the 5th to last day in a month.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2,3,4",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "byyearday",
-                        "type": "string",
-                        "title": "By Year Day",
-                        "description": "iCal - Comma separated numeric days of the month, where frequency is YEARLY. Can be negative to represent days before the end of the year; e.g. -1 is the last day in a year.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2,3,4"
-                    },
-                    {
-                        "name": "description",
-                        "type": "string",
-                        "title": "Description",
-                        "description": "A free text description of the availability of the service.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "The service is available from 10 am to 6pm weekdays. The service is not available on public holidays.",
                         "core": "Y"
                     },
                     {
@@ -1629,40 +1020,6 @@
                         },
                         "example": "18:00:00",
                         "core": "Y"
-                    },
-                    {
-                        "name": "schedule_link",
-                        "type": "string",
-                        "title": "Schedule Link",
-                        "description": "URL of a link for the schedule which may show each individual session and may provide a booking facility.",
-                        "format": "uri",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "http://example.com"
-                    },
-                    {
-                        "name": "attending_type",
-                        "type": "string",
-                        "title": "Attending Type",
-                        "description": "A free text description of how to attend this service.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "You can attend this service in-person or remotely via video conferencing"
-                    },
-                    {
-                        "name": "notes",
-                        "type": "string",
-                        "title": "Notes",
-                        "description": "Free text notes on the schedule.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Some of our staff will be unavailable during their lunch break which may be any 30 minute period between 1200 and 1400"
                     }
                 ],
                 "foreignKeys": [
@@ -1673,194 +1030,6 @@
                             "fields": "id"
                         }
                     },
-                    {
-                        "fields": "service_id",
-                        "reference": {
-                            "resource": "service",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "service_at_location_id",
-                        "reference": {
-                            "resource": "service_at_location",
-                            "fields": "id"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "funding",
-            "path": "funding.csv",
-            "description": "The sources of funding for a service or organization.",
-            "format": "csv",
-            "mediatype": "text/csv",
-            "profile": "tabular-data-resource",
-            "schema": {
-                "primaryKey": "id",
-                "fields": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "title": "Identifier",
-                        "description": "The identifier for the funding. Each entry must have a unique identifier.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": true
-                        },
-                        "example": "1f2df32c-bf08-4b8e-bd6f-e834014b19bc"
-                    },
-                    {
-                        "name": "organization_id",
-                        "type": "string",
-                        "title": "Organization Identifier",
-                        "description": "The identifier of the organization in receipt of this funding.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610"
-                    },
-                    {
-                        "name": "service_id",
-                        "type": "string",
-                        "title": "Service Identifier",
-                        "format": "uuid",
-                        "description": "The identifier of the service in receipt of this funding.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "ac148810-d857-441c-9679-408f346de14b"
-                    },
-                    {
-                        "name": "source",
-                        "type": "string",
-                        "title": "Source",
-                        "description": "A free text description of the source of funds for this organization or service.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "This service is funded partially by the MyCity local government and via grants made by charity funding bodies. We also operate a for-profit department which is used to partially cover the expense of the public service"
-                    }
-                ],
-                "foreignKeys": [
-                    {
-                        "fields": "organization_id",
-                        "reference": {
-                            "resource": "organization",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "service_id",
-                        "reference": {
-                            "resource": "service",
-                            "fields": "id"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "service_area",
-            "path": "service_areas.csv",
-            "description": "The details of the geographic area for which a service is available.",
-            "format": "csv",
-            "mediatype": "text/csv",
-            "profile": "tabular-data-resource",
-            "schema": {
-                "primaryKey": "id",
-                "fields": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "title": "Identifier",
-                        "description": "The identifier for the service area. Each service area must have a unique identifier.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": true
-                        },
-                        "example": "381c64f1-a724-4884-9c21-ac96c21cca3e",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "service_id",
-                        "type": "string",
-                        "title": "Service Identifier",
-                        "description": "The identifier of the service for which this entry describes the service area",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "ac148810-d857-441c-9679-408f346de14b",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "name",
-                        "type": "string",
-                        "title": "Name",
-                        "description": "A free text geographic area where a service is available.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "The service is available to all residents of the MyCity area. We provide the service in our offices or via video conferencing to any who can provide evidence of their residency.",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "description",
-                        "type": "string",
-                        "title": "Description",
-                        "description": "A more detailed free text description of this service area. Used to provide any additional information that cannot be communicated using the structured area and geometry fields.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "The service is available to all residents of the MyCity area, including all postcodes starting with AB1, AB2, and AB3",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "extent",
-                        "type": "string",
-                        "title": "Extent",
-                        "description": "A definition of the polygon defining the area.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "extent"
-                    },
-                    {
-                        "name": "extent_type",
-                        "type": "string",
-                        "title": "Extent Type",
-                        "description": "The format of the extent field  populated from an enum of  \"geojson\", \"topojson\",  \"kml\",and (for legacy systems or early state during transformation) \"text\".",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "geojson"
-                    },
-                    {
-                        "name": "uri",
-                        "type": "string",
-                        "title": "URI",
-                        "description": "A URI which acts as a persistent identifier to identify an area.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "http://example.com"
-                    }
-                ],
-                "foreignKeys": [
                     {
                         "fields": "service_id",
                         "reference": {
@@ -1886,7 +1055,6 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier for the document. Each document must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
@@ -1898,9 +1066,8 @@
                         "type": "string",
                         "title": "Service Identifier",
                         "description": "The identifier of the service for which this entry describes the required document.",
-                        "format": "uuid",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
                         "example": "ac148810-d857-441c-9679-408f346de14b"
@@ -1955,50 +1122,23 @@
                         "type": "string",
                         "title": "Identifier",
                         "description": "The identifier for the language. Each entry must have a unique identifier.",
-                        "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "2989d3ed-c547-48f8-8f9d-432d81c7892e",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "service_id",
-                        "type": "string",
-                        "title": "Service Identifier",
-                        "description": "The identifier of the service for which the entry describes the languages in which services are delivered.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "ac148810-d857-441c-9679-408f346de14b",
+                        "example": "location-name-fr",
                         "core": "Y"
                     },
                     {
                         "name": "location_id",
-                        "type": "string",
+                        "type": "number",
                         "title": "Location Identifier",
                         "description": "The identifier of the location for which the entry describes the languages in which services are delivered.",
-                        "format": "uuid",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5"
-                    },
-                    {
-                        "name": "phone_id",
-                        "type": "string",
-                        "title": "Phone Identifier",
-                        "format": "uuid",
-                        "description": "The identifier of the phone for which the entry describes the languages in which services delivered.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "1554f2e2-a373-45db-a3fa-9fc48a61c15e"
+                        "example": "1234"
                     },
                     {
                         "name": "name",
@@ -2022,17 +1162,6 @@
                             "unique": false
                         },
                         "example": "ur"
-                    },
-                    {
-                        "name": "note",
-                        "type": "string",
-                        "title": "Note",
-                        "description": "A free text description of any additional context or services provided for this language.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Translation services provided via bilingual staff when they are available"
                     }
                 ],
                 "foreignKeys": [
@@ -2040,20 +1169,6 @@
                         "fields": "location_id",
                         "reference": {
                             "resource": "location",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "phone_id",
-                        "reference": {
-                            "resource": "phone",
-                            "fields": "id"
-                        }
-                    },
-                    {
-                        "fields": "service_id",
-                        "reference": {
-                            "resource": "service",
                             "fields": "id"
                         }
                     }
@@ -2071,65 +1186,28 @@
                 "primaryKey": "id",
                 "fields": [
                     {
-                        "name": "id",
-                        "type": "string",
-                        "title": "Identifier",
-                        "description": "The identifier for this accessibility information. Each entry must have a unique identifier.",
+                        "name": "location_id",
+                        "type": "number",
+                        "title": "Location Identifier",
+                        "description": "The identifier for the location of the accessibility provision.",
                         "format": "uuid",
                         "constraints": {
                             "required": true,
                             "unique": true
                         },
-                        "example": "afcf296e-1cb2-4139-9c88-33d587d1a50b",
+                        "example": "1234",
                         "core": "Y"
                     },
                     {
-                        "name": "location_id",
-                        "type": "string",
-                        "title": "Location Identifier",
-                        "description": "The identifier for the location of the accessibility provision.",
-                        "format": "uuid",
+                        "name": "accessible",
+                        "type": "boolean",
+                        "title": "Accessible",
+                        "description": "True if the address is accessible to person with reduced mobility",
                         "constraints": {
-                            "required": false,
+                            "required": true,
                             "unique": false
                         },
-                        "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "description",
-                        "type": "string",
-                        "title": "Description",
-                        "description": "A free text description of the assistance or infrastructure that facilitates access to clients with disabilities.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "The building is equipped with induction loops for hearing aids. Wheelchair access is possible on all levels.",
-                        "core": "Y"
-                    },
-                    {
-                        "name": "details",
-                        "type": "string",
-                        "title": "Details",
-                        "description": "Any further details relating to the relevant accessibility arrangements at this location.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Switch hearing aid to T-coil to access the induction loop facility."
-                    },
-                    {
-                        "name": "url",
-                        "type": "string",
-                        "title": "URL",
-                        "description": "The URL of a page giving more information about the accessibility of the location.",
-                        "format": "uri",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "http://example.com"
+                        "example": "true"
                     }
                 ],
                 "foreignKeys": [
@@ -2326,197 +1404,6 @@
                             "unique": false
                         },
                         "example": "ASCII"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "cost_option",
-            "path": "cost_options.csv",
-            "description": "The costs of a service at certain points in time. This is an LGA Extension. This object provides a structured version of the text information contained in the 'fees' field of the 'service' object.",
-            "format": "csv",
-            "mediatype": "text/csv",
-            "profile": "tabular-data-resource",
-            "schema": {
-                "primaryKey": "id",
-                "fields": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "title": "Identifier",
-                        "description": "The identifier for the cost option. Each entry must have a unique identifier",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": true
-                        },
-                        "example": "1fdf4d39-3d80-484d-9f92-a8ffa08621e7"
-                    },
-                    {
-                        "name": "service_id",
-                        "type": "string",
-                        "title": "Service Identifier",
-                        "description": "The identifier of the services for which the entry describes the cost.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "ac148810-d857-441c-9679-408f346de14b"
-                    },
-                    {
-                        "name": "valid_from",
-                        "type": "date",
-                        "title": "Valid From",
-                        "description": "The date when this price is valid from.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2020-01-01"
-                    },
-                    {
-                        "name": "valid_to",
-                        "type": "date",
-                        "title": "Valid To",
-                        "description": "The date when this price is valid to.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "2022-12-31"
-                    },
-                    {
-                        "name": "option",
-                        "type": "string",
-                        "title": "Option",
-                        "description": "Conditions associated with the cost option.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "Under 18s and Over 60s"
-                    },
-                    {
-                        "name": "currency",
-                        "type": "string",
-                        "title": "Currency",
-                        "description": "The 3 letter currency code of this cost option (expected to be gbp by Open Referral UK).",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "gbp"
-                    },
-                    {
-                        "name": "amount",
-                        "type": "number",
-                        "title": "Amount",
-                        "description": "The cost of the option, expressed as an amount.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "35"
-                    },
-                    {
-                        "name": "amount_description",
-                        "type": "string",
-                        "title": "Amount Description",
-                        "description": "Specific details qualifying the cost amount.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "per 1 hour session"
-                    }
-                ],
-                "foreignKeys": [
-                    {
-                        "fields": "service_id",
-                        "reference": {
-                            "resource": "service",
-                            "fields": "id"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "organization_identifier",
-            "path": "organization_identifiers.csv",
-            "description": "The details of the third party identifiers for organizations, such as: company registration number, charity number, tax registration number.",
-            "format": "csv",
-            "mediatype": "text/csv",
-            "profile": "tabular-data-resource",
-            "schema": {
-                "primaryKey": "id",
-                "fields": [
-                    {
-                        "name": "id",
-                        "type": "string",
-                        "title": "Identifier",
-                        "description": "The identifier for this organization identifier entry. Each entry must have a unique identifier.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": true
-                        },
-                        "example": "d4dbcebc-0802-47cb-8651-b937ac4f2f3e"
-                    },
-                    {
-                        "name": "organization_id",
-                        "type": "string",
-                        "title": "Organization Identifier",
-                        "description": "The identifier of the organization. This should match the uuid of an organization object.",
-                        "format": "uuid",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "d9d5e0f5-d3ce-4f73-9a2f-4dd0ecc6c610"
-                    },
-                    {
-                        "name": "identifier_scheme",
-                        "type": "string",
-                        "title": "Identifier Scheme",
-                        "description": "The scheme of the third party identifier, according to http://org-id.guide/.",
-                        "constraints": {
-                            "required": false,
-                            "unique": false
-                        },
-                        "example": "GB-COH"
-                    },
-                    {
-                        "name": "identifier_type",
-                        "type": "string",
-                        "title": "Identifier Type",
-                        "description": "A human-readable equivalent of the identifier_scheme. This may be used in cases where org-id.guide does not list an appropriate identifier scheme.",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "Company number"
-                    },
-                    {
-                        "name": "identifier",
-                        "type": "string",
-                        "title": "Third Party Identifier",
-                        "description": "The third-party identifier value.",
-                        "constraints": {
-                            "required": true,
-                            "unique": false
-                        },
-                        "example": "1234567"
-                    }
-                ],
-                "foreignKeys": [
-                    {
-                        "fields": "organization_id",
-                        "reference": {
-                            "resource": "organization",
-                            "fields": "id"
-                        }
                     }
                 ]
             }

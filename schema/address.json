@@ -15,34 +15,22 @@
       "type": "string",
       "title": "Identifier",
       "description": "The identifier of the postal address. Each postal address must have a unique identifier.",
-      "format": "uuid",
       "constraints": {
         "unique": true
       },
-      "example": "74706e55-df26-4b84-80fe-ecc30b5befb4",
+      "example": "1-avenue-de-la-republique-75001-paris-france",
       "core": "Y"
     },
     "location_id": {
       "name": "location_id",
-      "type": "string",
+      "type": "number",
       "title": "Location Identifier",
       "description": "The identifier of the location for this postal address.",
       "format": "uuid",
       "constraints": {
-        "unique": false
+        "unique": true
       },
-      "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5",
-      "core": "Y"
-    },
-    "attention": {
-      "name": "attention",
-      "type": "string",
-      "title": "Attention",
-      "description": "The name of the person or entity whose attention should be sought at the location. These are often included as a \"care of\" component of an address.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "A. Persona",
+      "example": "1234",
       "core": "Y"
     },
     "address_1": {
@@ -55,16 +43,6 @@
       },
       "example": "1-30 Main Street",
       "core": "Y"
-    },
-    "address_2": {
-      "name": "address_2",
-      "type": "string",
-      "title": "Address line 2",
-      "description": "A second (additional) line of address information.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "MyVillage"
     },
     "city": {
       "name": "city",
@@ -85,7 +63,7 @@
       "constraints": {
         "unique": false
       },
-      "example": "MyRegion",
+      "example": "Auvergne-Rh\u00f4ne-Alpes",
       "core": "Y"
     },
     "state_province": {
@@ -96,7 +74,7 @@
       "constraints": {
         "unique": false
       },
-      "example": "MyState",
+      "example": "Puy-de-D\u00f4me",
       "core": "Y"
     },
     "postal_code": {
@@ -107,7 +85,7 @@
       "constraints": {
         "unique": false
       },
-      "example": "ABC 1234",
+      "example": "63000",
       "core": "Y"
     },
     "country": {
@@ -131,29 +109,28 @@
       },
       "example": "postal",
       "core": "Y",
-      "enum": [
-        "physical",
-        "postal",
-        "virtual"
-      ]
+      "const": "postal"
     },
-    "attributes": {
-      "name": "attributes",
-      "type": "array",
-      "title": "Attributes",
-      "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
-      "items": {
-        "$ref": "attribute.json"
-      }
+    "cityCode": {
+      "name": "cityCode",
+      "type": "string",
+      "title": "City code",
+      "description": "The city code when applicable. In France it's the INSEE code.",
+      "constraints": {
+        "unique": false
+      },
+      "example": "75000"
     }
   },
   "required": [
     "id",
     "address_1",
     "city",
+    "region",
     "state_province",
     "postal_code",
     "country",
-    "address_type"
+    "address_type",
+    "location_id"
   ]
 }

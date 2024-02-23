@@ -24,48 +24,23 @@
     },
     "organization_id": {
       "name": "organization_id",
-      "type": "string",
+      "type": "number",
       "title": "Organization Identifier",
       "description": "The identifier of the organization for which this is a contact.",
-      "format": "uuid",
       "constraints": {
         "unique": false
       },
-      "example": "ae67a707-5893-4225-b0b1-320ab9cb596b"
-    },
-    "service_id": {
-      "name": "service_id",
-      "type": "string",
-      "title": "Service Identifier",
-      "description": "The identifier of the service for which this is a contact.",
-      "format": "uuid",
-      "constraints": {
-        "unique": false
-      },
-      "example": "ac148810-d857-441c-9679-408f346de14b",
-      "core": "Y"
-    },
-    "service_at_location_id": {
-      "name": "service_at_location_id",
-      "type": "string",
-      "title": "Service At Location Identifier",
-      "format": "uuid",
-      "description": "The identifier of the \u2018service at location\u2019 entry, when this contact is specific to a service in a particular location.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "93eaf18d-1cd2-4ec7-bffb-3c9172ee5070"
+      "example": "1234"
     },
     "location_id": {
       "name": "location_id",
-      "type": "string",
+      "type": "number",
       "title": "Location Identifier",
-      "format": "uuid",
       "description": "The identifier for the location of the contact.",
       "constraints": {
         "unique": false
       },
-      "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5"
+      "example": "1234"
     },
     "name": {
       "name": "name",
@@ -89,16 +64,6 @@
       "example": "Reception Manager",
       "core": "Y"
     },
-    "department": {
-      "name": "department",
-      "type": "string",
-      "title": "Department",
-      "description": "The department that the contact is a part of.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "Reception"
-    },
     "email": {
       "name": "email",
       "type": "string",
@@ -118,18 +83,12 @@
       "items": {
         "$ref": "phone.json"
       }
-    },
-    "attributes": {
-      "name": "attributes",
-      "type": "array",
-      "title": "Attributes",
-      "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
-      "items": {
-        "$ref": "attribute.json"
-      }
     }
   },
   "required": [
-    "id"
+    "id",
+    "name",
+    "email",
+    "organization_id"
   ]
 }

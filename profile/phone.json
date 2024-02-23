@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "id": {
+      "format": null
+    },
+    "extension": null,
+    "type": null,
+    "languages": null,
+    "attributes": null,
+    "service_at_location_id": null,
+    "service_id": null,
+    "organization_id": {
+      "type": "number",
+      "format": null,
+      "example": "1234"
+    }
+  }
+}
