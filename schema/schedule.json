@@ -15,11 +15,10 @@
       "type": "string",
       "title": "Identifier",
       "description": "The identifier for the schedule. Each entry must have a unique identifier.",
-      "format": "uuid",
       "constraints": {
         "unique": true
       },
-      "example": "48102e86-bb50-41c4-8f1e-e269368c41d1",
+      "example": "location-1234-permanent",
       "core": "Y"
     },
     "service_id": {
@@ -27,7 +26,6 @@
       "type": "string",
       "title": "Service Identifier",
       "description": "The identifier of the service for which this is the regular schedule",
-      "format": "uuid",
       "constraints": {
         "unique": false
       },
@@ -36,26 +34,13 @@
     },
     "location_id": {
       "name": "location_id",
-      "type": "string",
+      "type": "number",
       "title": "Location Identifier",
       "description": "The identifier of the location for which this is the regular schedule",
-      "format": "uuid",
       "constraints": {
         "unique": false
       },
-      "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5"
-    },
-    "service_at_location_id": {
-      "name": "service_at_location_id",
-      "type": "string",
-      "title": "Service At Location Identifier",
-      "description": "The identifier of the \u2018service at location\u2019 table entry, when this schedule is specific to a service in a particular location.",
-      "format": "uuid",
-      "constraints": {
-        "unique": false
-      },
-      "example": "e94c9f38-1e8f-4564-91d4-d53501ab1765",
-      "core": "Y"
+      "example": "1234"
     },
     "valid_from": {
       "name": "valid_from",
@@ -81,44 +66,11 @@
       "core": "Y",
       "datapackage_type": "date"
     },
-    "dtstart": {
-      "name": "dtstart",
-      "type": "string",
-      "title": "Date Start",
-      "description": "iCal - The date of the first event is the schedule. Necessary when using the \u2018interval\u2019 feature, optional otherwise.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "2005-01-01",
-      "core": "Y",
-      "datapackage_type": "date"
-    },
     "timezone": {
       "name": "timezone",
       "type": "number",
       "title": "Timezone",
       "description": "The timezone that all dates are expressed as, expressed as a UTC offset. Dates are assumed to be UTC otherwise.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "3"
-    },
-    "until": {
-      "name": "until",
-      "type": "string",
-      "title": "Until",
-      "description": "iCal - The date of the last occurrence of the recurring event.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "2005-01-01",
-      "datapackage_type": "date"
-    },
-    "count": {
-      "name": "count",
-      "type": "number",
-      "title": "Count",
-      "description": "iCal - The number of times that the event occurs. Use this instead of \u2018until\u2019, if appropriate.",
       "constraints": {
         "unique": false
       },
@@ -153,21 +105,7 @@
       },
       "example": "WEEKLY",
       "core": "Y",
-      "enum": [
-        "WEEKLY",
-        "MONTHLY"
-      ]
-    },
-    "interval": {
-      "name": "interval",
-      "type": "number",
-      "title": "Interval",
-      "description": "iCal - How often the frequency repeats. For example, and Interval of 2 for a WEEKLY Frequency would represent fortnightly.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "1",
-      "core": "Y"
+      "const": "WEEKLY"
     },
     "byday": {
       "name": "byday",
@@ -178,48 +116,6 @@
         "unique": false
       },
       "example": "TH,FR",
-      "core": "Y"
-    },
-    "byweekno": {
-      "name": "byweekno",
-      "type": "string",
-      "title": "By Week Number",
-      "description": "iCal - Comma separated numeric weeks of the year, where freq is WEEKLY. Can be negative to represent weeks before the end of the year; e.g. -5 is the 5th to last week in a year.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "41,42"
-    },
-    "bymonthday": {
-      "name": "bymonthday",
-      "type": "string",
-      "title": "By Month Day",
-      "description": "iCal - Comma separated numeric days of the month, where frequency is MONTHLY. Can be negative to represent days before the end of the month; e.g. -5 is the 5th to last day in a month.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "2,3,4",
-      "core": "Y"
-    },
-    "byyearday": {
-      "name": "byyearday",
-      "type": "string",
-      "title": "By Year Day",
-      "description": "iCal - Comma separated numeric days of the month, where frequency is YEARLY. Can be negative to represent days before the end of the year; e.g. -1 is the last day in a year.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "2,3,4"
-    },
-    "description": {
-      "name": "description",
-      "type": "string",
-      "title": "Description",
-      "description": "A free text description of the availability of the service.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "The service is available from 10 am to 6pm weekdays. The service is not available on public holidays.",
       "core": "Y"
     },
     "opens_at": {
@@ -245,46 +141,6 @@
       "example": "18:00:00",
       "core": "Y",
       "datapackage_type": "time"
-    },
-    "schedule_link": {
-      "name": "schedule_link",
-      "type": "string",
-      "title": "Schedule Link",
-      "description": "URL of a link for the schedule which may show each individual session and may provide a booking facility.",
-      "format": "uri",
-      "constraints": {
-        "unique": false
-      },
-      "example": "http://example.com"
-    },
-    "attending_type": {
-      "name": "attending_type",
-      "type": "string",
-      "title": "Attending Type",
-      "description": "A free text description of how to attend this service.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "You can attend this service in-person or remotely via video conferencing"
-    },
-    "notes": {
-      "name": "notes",
-      "type": "string",
-      "title": "Notes",
-      "description": "Free text notes on the schedule.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "Some of our staff will be unavailable during their lunch break which may be any 30 minute period between 1200 and 1400"
-    },
-    "attributes": {
-      "name": "attributes",
-      "type": "array",
-      "title": "Attributes",
-      "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
-      "items": {
-        "$ref": "attribute.json"
-      }
     }
   },
   "required": [

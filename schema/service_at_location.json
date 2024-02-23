@@ -15,11 +15,10 @@
       "type": "string",
       "title": "Identifier",
       "description": "The identifier of the service at location entry. Each entry must have a unique identifier.",
-      "format": "uuid",
       "constraints": {
         "unique": true
       },
-      "example": "e94c9f38-1e8f-4564-91d4-d53501ab1765",
+      "example": "service-id-1234",
       "core": "Y"
     },
     "service_id": {
@@ -27,7 +26,6 @@
       "type": "string",
       "title": "Service Identifier",
       "description": "The identifier of the service at a given location.",
-      "format": "uuid",
       "constraints": {
         "unique": false
       },
@@ -36,67 +34,20 @@
     },
     "location_id": {
       "name": "location_id",
-      "type": "string",
+      "type": "number",
       "title": "Location Identifier",
       "description": "The identifier of the location where this service operates.",
-      "format": "uuid",
       "constraints": {
         "unique": false
       },
-      "example": "3a19ff88-4620-4d17-9830-ac1d859eb5d5",
+      "example": "1234",
       "core": "Y"
-    },
-    "description": {
-      "name": "description",
-      "type": "string",
-      "title": "Description",
-      "description": "A free text description of the service at this specific location.",
-      "constraints": {
-        "unique": false
-      },
-      "example": "Counselling Services provided by trained professionals in the MyCity area."
-    },
-    "contacts": {
-      "name": "contacts",
-      "type": "array",
-      "title": "Contacts",
-      "description": "The details of the named contacts for services and organizations.",
-      "items": {
-        "$ref": "contact.json"
-      }
-    },
-    "phones": {
-      "name": "phones",
-      "type": "array",
-      "title": "Phones",
-      "description": "The details of the telephone numbers used to contact organizations, services, and locations.",
-      "items": {
-        "$ref": "phone.json"
-      }
-    },
-    "schedules": {
-      "name": "schedules",
-      "type": "array",
-      "title": "Schedules",
-      "description": "The details of when a service or location is open. Entries are RFC 5545 RRULES.",
-      "items": {
-        "$ref": "schedule.json"
-      }
     },
     "location": {
       "name": "location",
       "title": "Location",
       "description": "The details of the locations where organizations operate. Locations may be virtual, and one organization may have many locations.",
       "$ref": "location.json"
-    },
-    "attributes": {
-      "name": "attributes",
-      "type": "array",
-      "title": "Attributes",
-      "description": "A link between a service and one or more classifications that describe the nature of the service provided.",
-      "items": {
-        "$ref": "attribute.json"
-      }
     }
   },
   "required": [

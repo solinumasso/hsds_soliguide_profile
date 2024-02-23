@@ -1,9 +1,10 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "HSDS OpenAPI Demo Profile",
+    "title": "HSDS OpenAPI Soliguide Profile",
     "version": "3.0",
-    "description": "Demo Profile",
+    "description": "Soliguide Profile",
+    "contact": "tech@solinum.org",
     "license": {
       "name": "Creative Commons Attribution Share-Alike 4.0 license",
       "url": "https://creativecommons.org/licenses/by/4.0/"
@@ -68,7 +69,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/compiled/service.json"
+                  "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/compiled/service.json"
                 }
               }
             }
@@ -125,7 +126,7 @@
                     "contents": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/compiled/service_list.json"
+                        "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/compiled/service_list.json"
                       }
                     }
                   },
@@ -163,7 +164,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/taxonomy.json"
+                  "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/taxonomy.json"
                 }
               }
             }
@@ -200,7 +201,7 @@
                     "contents": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/taxonomy.json"
+                        "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/taxonomy.json"
                       }
                     }
                   },
@@ -238,7 +239,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/taxonomy_term.json"
+                  "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/taxonomy_term.json"
                 }
               }
             }
@@ -296,7 +297,7 @@
                     "contents": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/taxonomy_term.json"
+                        "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/taxonomy_term.json"
                       }
                     }
                   },
@@ -339,7 +340,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/compiled/organization.json"
+                  "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/compiled/organization.json"
                 }
               }
             }
@@ -383,7 +384,7 @@
                     "contents": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/compiled/organization_list.json"
+                        "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/compiled/organization_list.json"
                       }
                     }
                   },
@@ -421,7 +422,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/compiled/service.json"
+                  "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/compiled/service.json"
                 }
               }
             }
@@ -480,7 +481,7 @@
                     "contents": {
                       "type": "array",
                       "items": {
-                        "$ref": "https://raw.githubusercontent.com/openreferral/hsds_example_profile/main/schema/compiled/service_at_location_list.json"
+                        "$ref": "https://raw.githubusercontent.com/solinumasso/hsds_soliguide_profile/main/schema/compiled/service_at_location_list.json"
                       }
                     }
                   },
@@ -504,7 +505,7 @@
         "properties": {
           "total_items": {
             "type": "integer",
-            "description": "Count of total results."
+            "description": "The total number of entities (e.g. services, organizations) returned"
           },
           "total_pages": {
             "type": "integer",
@@ -512,23 +513,23 @@
           },
           "page_number": {
             "type": "integer",
-            "description": "Current page number."
+            "description": "The number of the current page"
           },
           "size": {
             "type": "integer",
-            "description": "Size of current page."
+            "description": "The number of entities in the current page."
           },
           "first_page": {
             "type": "boolean",
-            "description": "Is this page the first page."
+            "description": "A Boolean value indicating if this is the first page"
           },
           "last_page": {
             "type": "boolean",
-            "description": "Is this page the last page."
+            "description": "A Boolean value indicating if this is the last page"
           },
           "empty": {
             "type": "boolean",
-            "description": "Is this page empty."
+            "description": "A Boolean value indicating if there is an empty result set"
           }
         }
       }

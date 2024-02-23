@@ -149,4 +149,63 @@ If you wish to generate your reference tables using the compiled schemas availab
 
 If you run `python/generate_schema_reference_page.py`, then this section will contain a reference table for each schema file in your Profile. The script is very naïve, and will insert each reference table in whatever order it reads the files from &ndash; you likely want to change the order once you've run the script!
 
-{{insert_schema_reference_tables}}
+### attribute
+
+```{jsonschema} ../schema/attribute.json
+```
+### meta_table_description
+
+```{jsonschema} ../schema/meta_table_description.json
+```
+### taxonomy
+
+```{jsonschema} ../schema/taxonomy.json
+```
+### taxonomy_term
+
+```{jsonschema} ../schema/taxonomy_term.json
+```
+### accessibility
+
+```{jsonschema} ../schema/accessibility.json
+```
+### address
+
+```{jsonschema} ../schema/address.json
+```
+### contact
+
+```{jsonschema} ../schema/contact.json
+```
+### language
+
+```{jsonschema} ../schema/language.json
+```
+### location
+
+```{jsonschema} ../schema/location.json
+```
+### organization
+
+```{jsonschema} ../schema/organization.json
+```
+### phone
+
+```{jsonschema} ../schema/phone.json
+```
+### required_document
+
+```{jsonschema} ../schema/required_document.json
+```
+### schedule
+
+```{jsonschema} ../schema/schedule.json
+```
+### service
+
+```{jsonschema} ../schema/service.json
+```
+### service_at_location
+
+```{jsonschema} ../schema/service_at_location.json
+```
